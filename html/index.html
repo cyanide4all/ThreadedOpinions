@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HUEHUEHE</title>
+</head>
+<body>
+
+{% for message in messages %}
+    <hr>
+    {{message.contenido}}
+    <hr>
+    <form action="/postMessage" method="post">
+            <input type="text" name="contenido" placeholder="contenido"/>
+            <input type="text" name="autor" placeholder="autor"/>
+            <input type="submit"/>
+            <input type="hidden" name="padre" value="{{message.key.urlsafe()}}"/>
+    </form>
+{% else %}
+    <h3>No hay mensajes :(</h3>
+{% endfor %}
+<h3>Mensaje principal nuevo</h3>
+
+<!-- FORMULARIO CON PADRE NONE -->
+    <form action="/postMessage" method="post">
+            <input type="text" name="contenido" placeholder="contenido"/>
+            <input type="text" name="autor" placeholder="autor"/>
+            <input type="submit"/>
+    </form>
+<!-- HASTA AQUI-->
+</body>
+</html>
